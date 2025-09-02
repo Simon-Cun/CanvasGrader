@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Canvas Grade Calculator",
+  "name": "Canvas Grader",
   "version": "1.0",
   "description": "Calculates your canvas grade based on assignments.",
   "permissions": ["scripting", "activeTab"],
