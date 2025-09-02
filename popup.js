@@ -3,6 +3,7 @@ const gradesTable = document.getElementById("gradesTable");
 const finalGrade = document.getElementById("finalGrade");
 const newGroupInput = document.getElementById("newGroupName");
 const addGroupBtn = document.getElementById("addGroup");
+const groupControls = document.getElementById("groupControls");
 
 let groups = {}; // { groupName: [assignments] }
 
@@ -23,6 +24,9 @@ getGradesBtn.addEventListener("click", async () => {
             total: g.total,
           });
         });
+
+        // Show Add Group section once grades are fetched
+        groupControls.style.display = "block";
         renderTable();
       } else {
         alert("No grades found on this page.");
@@ -69,7 +73,6 @@ function scrapeGrades() {
 function renderTable() {
   gradesTable.innerHTML = "";
   Object.keys(groups).forEach((groupName) => {
-    // Group header
     const groupRow = document.createElement("tr");
     groupRow.innerHTML = `
       <th colspan="4" style="text-align:left; background:#eee;">
@@ -78,7 +81,6 @@ function renderTable() {
     `;
     gradesTable.appendChild(groupRow);
 
-    // Assignment header
     const headerRow = document.createElement("tr");
     headerRow.innerHTML = `
       <th>Assignment</th>
@@ -112,10 +114,9 @@ function renderTable() {
       `;
       gradesTable.appendChild(row);
 
-      // Event listeners
-      row.querySelector(".assignment-name").addEventListener("input", (e) => {
-        assignment.name = e.target.value;
-      });
+      row
+        .querySelector(".assignment-name")
+        .addEventListener("input", (e) => (assignment.name = e.target.value));
       row.querySelector(".score").addEventListener("input", (e) => {
         assignment.score = parseFloat(e.target.value);
         calculateFinalGrade();

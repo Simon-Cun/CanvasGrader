@@ -9,13 +9,14 @@
       th[colspan] { text-align: left; background: #eee; }
       input[type="number"] { width: 60px; }
       input[type="text"] { width: 150px; }
+      #groupControls { display: none; margin-top: 10px; }
     </style>
   </head>
   <body>
     <h2>Canvas Grade Calculator</h2>
 
-    <!-- Add new group -->
-    <div>
+    <!-- Add new group (hidden by default) -->
+    <div id="groupControls">
       <input type="text" id="newGroupName" placeholder="New group name" />
       <button id="addGroup">Add Group</button>
     </div>
